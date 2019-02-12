@@ -11,6 +11,11 @@ t = triu(bsxfun(@min,d,d.').*rand(n),1); % The upper trianglar random values
 t = floor(t);
 A = diag(d)+t+t.'; % Put them together in a symmetric matrix
 
-%Create L,U
+%Create L
 L = zeros(n, n);
-U = zeros(n, n);
+
+%Method 1: Figure out L(1, 1)
+L(1, 1) = sqrt(A(1, 1));
+
+%Method 2: Figure out L(val, 1)
+L(2:n, 1) = A(2:n, 1) / L(1, 1);
