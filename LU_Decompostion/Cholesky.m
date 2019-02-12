@@ -19,3 +19,13 @@ L(1, 1) = sqrt(A(1, 1));
 
 %Method 2: Figure out L(val, 1)
 L(2:n, 1) = A(2:n, 1) / L(1, 1);
+
+%Method 3: Figure out the rest of L
+for i = 2:n
+    L(i, i) = sqrt(A(i, i) - L(i, 1:i-1)*L(i, 1:i-1)')
+    for j = 2:i-1
+        L(i, j) = A(i, j) - L(j, 1:j-1)*L(i, 1:j-1);
+        L(i, j) = L(i, j) / L(j, j);
+    end
+end
+          
