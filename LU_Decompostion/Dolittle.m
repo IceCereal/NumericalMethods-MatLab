@@ -32,3 +32,11 @@ for i = 2:n
         U(i, j) = A(i, j) - L(i, 1:i-1)*U(1:i-1, j);
     end
 end
+
+%General Method to figure out L elements
+for i = 2:n
+    for k = i+1:n
+        L(k, i) = A(k, i) - L(k, 1:i-1)*U(1:i-1, i);
+        L(k, i) = L(k, i) / U(i, i);
+    end
+end
