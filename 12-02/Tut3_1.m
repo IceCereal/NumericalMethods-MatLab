@@ -21,3 +21,21 @@ end
 
 %Display C
 c
+
+%Function 2
+F_2 = @(x) (-sqrt(5) - ( x * (x+sqrt(5)) ) / sqrt(5) );
+
+%Fixed Point ~= 2.21
+c = 2.21;
+
+%Previous Iterator
+prev_c = 0;
+
+%Fixed Point Iteration
+while abs(prev_c - c) > stopCriteria
+    prev_c = c;
+    c = F_2(prev_c);
+end
+
+%Display C
+c
