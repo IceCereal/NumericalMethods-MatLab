@@ -25,3 +25,10 @@ U(1,:) = A(1,:);
 
 %Method of figuring out L(*, 1)
 L(2:n, 1) = A(2:n, 1) / U(1, 1)
+
+%General Method to figure out U elements
+for i = 2:n
+    for j = i:n
+        U(i, j) = A(i, j) - L(i, 1:i-1)*U(1:i-1, j);
+    end
+end
