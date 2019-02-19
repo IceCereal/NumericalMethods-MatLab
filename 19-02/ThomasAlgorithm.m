@@ -22,3 +22,11 @@ for i = 2:n-1
     A(i, i+1) = randi(imax);
 end
 %Fin Creating Matrix
+
+%Create Values Vector
+D = zeros(n,1);
+
+for i = 1:n
+    D(i) = randi(imax);
+end
+%Fin Create Values
