@@ -52,3 +52,14 @@ for i = 2:n-1
     Placeholder_D(i) = D(i) - multiplier * D(i);
 end
 %Fin Create Placeholder
+
+%Back Substitution
+X = zeros(n,1);
+
+X(n) = Placeholder_D(n);
+
+for i = n-1:-1:1
+   X(i) =  Placeholder_D(i) - Placeholder(i, i+1) * X(i + 1);
+   X(i) = X(i) / Placeholder(i, i);    
+end
+%Fin Back Substitution
