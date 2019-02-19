@@ -30,3 +30,21 @@ for i = 1:n
     D(i) = randi(imax);
 end
 %Fin Create Values
+
+%Create Placeholder Matrix for Gaussian Elimination
+Placeholder = zeros(n, n);
+
+Placeholder(1, 1) = A(1, 1);
+Placeholder(1, 2) = A(1, 2);
+
+multiplier = A(n, n-1) / A(n-1, n-1);
+
+Placeholder(n, n) = A(n, n) - multiplier * A(n, n);
+
+for i = 2:n-1
+    multiplier = A(i, i-1) / A(i-1, i-1);
+    
+    Placeholder(i, i) = A(i, i) - multiplier * A(i, i);
+    Placeholder(i, i+1) = A(i, i+1) - multiplier * A(i, i+1);    
+end
+%Fin Create Placeholder
